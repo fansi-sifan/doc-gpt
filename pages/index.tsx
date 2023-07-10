@@ -17,7 +17,7 @@ export default function Home() {
 
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [mode, setMode] = useState<"search" | "chat">("chat");
-  const [matchCount, setMatchCount] = useState<number>(5);
+  const [matchCount, setMatchCount] = useState<number>(25);
   const [apiKey, setApiKey] = useState<string>("");
 
   const handleSearch = async () => {
@@ -50,6 +50,9 @@ export default function Home() {
     }
 
     const results: PGChunk[] = await searchResponse.json();
+    console.log("pgchunk")
+    console.log(results)
+    // setChunks(results);
 
     setChunks(results);
 
@@ -94,10 +97,15 @@ export default function Home() {
     setChunks(results);
 
     const prompt = endent`
-    Use the following passages to provide an answer to the query: "${query}"
+    Use the following passages to provide an answer to the query from the book: "${query}". 
+    If there's any mispellings or grammer mistakes in the query, try to use your best judgement.
+    The query is related to stock options.
+    Respond in the same language of query language.
 
-    ${results?.map((d: any) => d.content).join("\n\n")}
+    ${results?.map((d: any) => d.paragraph).join("\n\n")}
     `;
+
+    // console.log(prompt)
 
     const answerResponse = await fetch("/api/answer", {
       method: "POST",
@@ -199,10 +207,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Paul Graham GPT</title>
+        <title>Index Ventures GPT</title>
         <meta
           name="description"
-          content={`AI-powered search and chat for Paul Graham's essays.`}
+          content={`AI-powered search and chat for TeamPlan.`}
         />
         <meta
           name="viewport"
@@ -294,7 +302,7 @@ export default function Home() {
                   ref={inputRef}
                   className="h-12 w-full rounded-full border border-zinc-600 pr-12 pl-11 focus:border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-800 sm:h-16 sm:py-2 sm:pr-16 sm:pl-16 sm:text-lg"
                   type="text"
-                  placeholder="How do I start a startup?"
+                  placeholder="What are stock options?"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -357,19 +365,19 @@ export default function Home() {
                       <div className="mt-4 border border-zinc-600 rounded-lg p-4">
                         <div className="flex justify-between">
                           <div>
-                            <div className="font-bold text-xl">{chunk.essay_title}</div>
-                            <div className="mt-1 font-bold text-sm">{chunk.essay_date}</div>
+                            <div className="font-bold text-xl">{chunk.section}</div>
+                            {/* <div className="mt-1 font-bold text-sm">{chunk.section}</div> */}
                           </div>
                           <a
                             className="hover:opacity-50 ml-2"
-                            href={chunk.essay_url}
+                            href={chunk.source}
                             target="_blank"
                             rel="noreferrer"
                           >
                             <IconExternalLink />
                           </a>
                         </div>
-                        <div className="mt-2">{chunk.content}</div>
+                        <div className="mt-2">{chunk.paragraph}</div>
                       </div>
                     </div>
                   ))}
@@ -383,25 +391,25 @@ export default function Home() {
                     <div className="mt-4 border border-zinc-600 rounded-lg p-4">
                       <div className="flex justify-between">
                         <div>
-                          <div className="font-bold text-xl">{chunk.essay_title}</div>
-                          <div className="mt-1 font-bold text-sm">{chunk.essay_date}</div>
+                          <div className="font-bold text-xl">{chunk.section}</div>
+                          {/* <div className="mt-1 font-bold text-sm">{chunk.section}</div> */}
                         </div>
                         <a
                           className="hover:opacity-50 ml-2"
-                          href={chunk.essay_url}
+                          href={chunk.source}
                           target="_blank"
                           rel="noreferrer"
                         >
                           <IconExternalLink />
                         </a>
                       </div>
-                      <div className="mt-2">{chunk.content}</div>
+                      <div className="mt-2">{chunk.paragraph}</div>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="mt-6 text-center text-lg">{`AI-powered search & chat for Paul Graham's essays.`}</div>
+              <div className="mt-6 text-center text-lg">{`AI-powered search & chat for Rewarding Talent.`}</div>
             )}
           </div>
         </div>

@@ -1,5 +1,6 @@
 export enum OpenAIModel {
-  DAVINCI_TURBO = "gpt-3.5-turbo"
+  // 'gpt-3.5-turbo'
+  'gpt-4'
 }
 
 export type PGEssay = {
@@ -14,13 +15,13 @@ export type PGEssay = {
 };
 
 export type PGChunk = {
-  essay_title: string;
-  essay_url: string;
-  essay_date: string;
-  essay_thanks: string;
-  content: string;
-  content_length: number;
-  content_tokens: number;
+  article: string;
+  source: string;
+  section: string;
+  // essay_thanks: string;
+  paragraph: string;
+  // content_length: number;
+  // content_tokens: number;
   embedding: number[];
 };
 
