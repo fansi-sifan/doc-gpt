@@ -15,19 +15,19 @@ export const OpenAIStream = async (prompt: string, apiKey: string) => {
     },
     method: "POST",
     body: JSON.stringify({
-      model: "gpt-3.5-turbo",
-      // model:"gpt-4",
+      // model: "gpt-3.5-turbo",
+      model:"gpt-4",
       messages: [
         {
           role: "system",
-          content: "You are a helpful assistant that accurately answers queries using the provided content. The book provides guide to stock options for European entrepreneurs. Use the text provided to form your answer. Be accurate, helpful, concise, and clear. If the question does not make sense, say that you don't know. If you can't find the anser in the context, say it is out of scope. If you don't know the answer, just say that you don't know, don't try to make up an answer."
+          content: "You are a helpful assistant that accurately answers queries using the provided content. The book provides guide to stock options for European entrepreneurs. Use the text provided to form your answer, no more than 500 words. Be accurate, helpful, concise, and clear. If the question does not make sense, say that you don't know. If you can't find the anser in the context, say it is out of scope. If you don't know the answer, just say that you don't know, don't try to make up an answer."
         },
         {
           role: "user",
           content: prompt
         }
       ],
-      max_tokens: 250,
+      max_tokens: 1000,
       temperature: 0.0,
       stream: true
     })
