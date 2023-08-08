@@ -1,6 +1,6 @@
 # Index Ventures report GPT
 
-AI-powered [search and chat[(https://iv-gpt.vercel.app/) for Index Ventures' [Rewarding Talent](https://www.indexventures.com/rewardingtalent/) book
+AI-powered [search and chat](https://iv-gpt.vercel.app/) for Index Ventures' [Rewarding Talent](https://www.indexventures.com/rewardingtalent/) book
 
 Modified from [Mckay Wrigley's Paul Graham GPT](https://github.com/mckaywrigley/paul-graham-gpt)
 
