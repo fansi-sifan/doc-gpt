@@ -303,11 +303,40 @@ export default function Home() {
                   ref={inputRef}
                   className="h-12 w-full rounded-full border border-zinc-600 pr-12 pl-11 focus:border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-800 sm:h-16 sm:py-2 sm:pr-16 sm:pl-16 sm:text-lg"
                   type="text"
-                  placeholder="What are stock options?"
+                  placeholder="Enter a question, or start with an example below"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
                 />
+
+                <div className="mt-4"></div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    className="w-full rounded-md border pr-3 pl-3 py-2 bg-gray-200 focus:bg-white focus:border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-800 sm:py-2 sm:pr-4 sm:pl-4 sm:text-lg text-xs italic"
+                    onClick={() => setQuery("What are stock options?")}
+                  >
+                    What are stock options?
+                  </button>
+                  <button
+                    className="w-full rounded-md border pr-3 pl-3 py-2 bg-gray-200 focus:bg-white focus:border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-800 sm:py-2 sm:pr-4 sm:pl-4 sm:text-lg text-xs italic"
+                    onClick={() => setQuery("what are the tips for equity decisions at seed stage and series A?")}
+                  >
+                    what are the tips for equity decisions at seed stage and series A?
+                  </button>
+                  <button
+                    className="w-full rounded-md border pr-3 pl-3 py-2 bg-gray-200 focus:bg-white focus:border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-800 sm:py-2 sm:pr-4 sm:pl-4 sm:text-lg text-xs italic"
+                    onClick={() => setQuery("what are the pros and cons of offering stock options?")}
+                  >
+                    what are the pros and cons of offering stock options?
+                  </button>
+                  <button
+                    className="w-full rounded-md border pr-3 pl-3 py-2 bg-gray-200 focus:bg-white focus:border-zinc-800 focus:outline-none focus:ring-1 focus:ring-zinc-800 sm:py-2 sm:pr-4 sm:pl-4 sm:text-lg text-xs italic"
+                    onClick={() => setQuery("why is it important to offer stock options?")}
+                  >
+                    why is it important to offer stock options?
+                  </button>
+                </div>
 
                 <button>
                   <IconArrowRight
@@ -315,7 +344,9 @@ export default function Home() {
                     className="absolute right-2 top-2.5 h-7 w-7 rounded-full bg-blue-500 p-1 hover:cursor-pointer hover:bg-blue-600 sm:right-3 sm:top-3 sm:h-10 sm:w-10 text-white"
                   />
                 </button>
+ 
               </div>
+
             ) : (
               <div className="text-center font-bold text-3xl mt-7">
                 Please enter your
