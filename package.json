@@ -20,6 +20,8 @@
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "eventsource-parser": "^0.1.0",
+    "humanloop": "^0.5.0-alpha.21",
+    "langchain": "^0.0.163",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
