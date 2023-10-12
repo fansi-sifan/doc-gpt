@@ -5,6 +5,7 @@ import { PGChunk } from "@/types";
 import { IconArrowRight, IconExternalLink, IconSearch } from "@tabler/icons-react";
 import endent from "endent";
 import Head from "next/head";
+import { ChatMessage } from "humanloop";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 
 export default function Home() {
@@ -115,6 +116,14 @@ export default function Home() {
       },
       body: JSON.stringify({ prompt, apiKey })
     });
+  
+    // const answerResponse = await fetch("/api/route", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({userMessages: prompt}), 
+    // });
 
     if (!answerResponse.ok) {
       setLoading(false);
